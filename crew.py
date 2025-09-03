@@ -35,13 +35,13 @@ class ResearchCrew:
             verbose=True
         )
 
-    @agent
-    def narrator(self) -> Agent:
-        return Agent(
-            config=self.agents_config["narrator"],
-            tools=[voice_tool],
-            verbose=True
-        )
+    # @agent
+    # def narrator(self) -> Agent:
+    #     return Agent(
+    #         config=self.agents_config["narrator"],
+    #         tools=[voice_tool],
+    #         verbose=True
+    #     )
 
     # === Tasks ===
     @before_kickoff

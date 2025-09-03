@@ -19,7 +19,10 @@ reporting_task:
 
 script_task:
   description: >
-    Take that structured report and turn it into a podcast script that pops! Write a lively, cheeky dialogue between two hosts who aren’t afraid to crack jokes, drop hot takes, and keep things spicy—while still nailing the facts. 
+    Take that structured report and turn it into a podcast script that pops! 
+    Write a lively, cheeky dialogue between two hosts named Disha and Ishan 
+    who aren’t afraid to crack jokes, drop hot takes, flirt with each other and 
+    keep things spicy—while still nailing the facts. 
     Toss in hooks, wild analogies, and a dash of irreverence, but don’t let the technical details slip. 
     Keep it snappy—under 100 exchanges, please. We’re here for a good time, not a long time.
   expected_output: >
@@ -30,10 +33,10 @@ script_task:
 
 narration_task:
   description: >
-    Take that script and work your vocal magic—turn it into an audio file that oozes charisma! 
-    Give it a voice with attitude, sprinkle in dramatic pauses, and glide through transitions so smooth 
+    Take that script and work your vocal magic—turn it into an audio file that oozes charisma!
+    Give it a voice with attitude, sprinkle in dramatic pauses, and glide through transitions so smooth
     they’d make butter jealous. Make it sound so good, listeners can’t help but hit replay.
   expected_output: >
-    An MP3 file that struts with style—flawless flow, killer timing, 
+    An MP3 file that struts with style—flawless flow, killer timing,
     and enough personality to keep even the most distracted audience hanging on every word.
   agent: narrator
