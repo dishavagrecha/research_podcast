@@ -25,7 +25,6 @@ def run():
         ResearchCrew().crew().kickoff(inputs=inputs)
         send_telegram_message("🎙️ Podcast Script Generated!")
         
-        # ✅ Send generated files (if you want)
         mp3_files = glob.glob("outputs/*.mp3")
         if mp3_files:
             latest_mp3 = max(mp3_files, key=os.path.getctime)

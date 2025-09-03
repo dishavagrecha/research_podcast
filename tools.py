@@ -1,13 +1,11 @@
 import os
 from crewai.tools import tool
-from crewai_tools import FileWriterTool, FileReadTool
+from crewai_tools import FileReadTool
+from openai import OpenAI
 
-# ✅ Built-in file tools
-file_writer_tool = FileWriterTool()
 file_reader_tool = FileReadTool()
 
-# 🎙️ Custom Voice Tool (TTS) — using OpenAI example
-from openai import OpenAI
+# 🎙️ OpenAI client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @tool("voice_tool")
@@ -23,13 +21,11 @@ def voice_tool(text: str, filename: str = "podcast.mp3") -> str:
     os.makedirs("outputs", exist_ok=True)
     filepath = os.path.join("outputs", filename)
 
-    response = client.audio.speech.create(
+    with client.audio.speech.with_streaming_response.create(
         model="gpt-4o-mini-tts",
         voice="alloy",
-        input=text
-    )
+        input=text,
+    ) as response:
+        response.stream_to_file(filepath)
 
-    with open(filepath, "wb") as f:
-        f.write(response.read())
-
-    return f"🎧 Podcast audio saved to {filepath}"
+    return f"Podcast audio saved to {filepath}"

@@ -2,16 +2,7 @@ from datetime import datetime
 import os
 from crewai import Agent, Task, Crew, Process
 from crewai.project import CrewBase, agent, before_kickoff, crew, task
-# from PyPDF2 import PdfReader
-from tools import file_reader_tool, file_writer_tool, voice_tool  
-
-# def read_pdf(file_path):
-#     reader = PdfReader(file_path)
-#     text = ""
-#     for page in reader.pages:
-#         if page.extract_text():
-#             text += page.extract_text() + "\n"
-#     return text
+from tools import file_reader_tool, voice_tool  
 
 
 @CrewBase
@@ -31,17 +22,17 @@ class ResearchCrew:
     def script_writer(self) -> Agent:
         return Agent(
             config=self.agents_config["script_writer"],
-            tools=[file_writer_tool, file_reader_tool],
+            tools=[file_reader_tool],
             verbose=True
         )
 
-    # @agent
-    # def narrator(self) -> Agent:
-    #     return Agent(
-    #         config=self.agents_config["narrator"],
-    #         tools=[voice_tool],
-    #         verbose=True
-    #     )
+    @agent
+    def narrator(self) -> Agent:
+        return Agent(
+            config=self.agents_config["narrator"],
+            tools=[voice_tool],
+            verbose=True
+        )
 
     # === Tasks ===
     @before_kickoff
@@ -59,8 +50,8 @@ class ResearchCrew:
     def reporting_task(self) -> Task:
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
         return Task(
-            config=self.tasks_config["reporting_task"],
-            output_file=f"outputs/report-{timestamp}.md"
+            config=self.tasks_config["reporting_task"]
+            # output_file=f"outputs/report-{timestamp}.md"
         )
 
     @task
@@ -74,10 +65,10 @@ class ResearchCrew:
     @task
     def narration_task(self) -> Task:
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-        return Task(
+        return Task( 
             config=self.tasks_config["narration_task"],
-            output_file=f"outputs/narration-{timestamp}.mp3"
-        )
+            output_file=f"outputs/narration-{timestamp}.mp3" 
+            )
 
     # === Crew Runner ===
     @crew
