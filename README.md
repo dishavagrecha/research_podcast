@@ -110,6 +110,14 @@ Otherwise, find it in the `outputs/` folder.
 
 ---
 
+## 📱 Demo (Telegram Bot)
+
+Upload a research paper PDF → get a podcast back in chat.
+
+![Telegram Demo](demo/telegram_screenshot.png)
+
+---
+
 ## Impact
 
 Reduced research paper reading time by ~70% for early testers.
