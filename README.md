@@ -51,7 +51,7 @@ research_podcast/
 1. **Clone the repo**
 
    ```bash
-   git clone https://github.com/your-username/research_podcast.git
+   git clone https://github.com/dishavagrecha/research_podcast.git
    cd research_podcast
    ```
 
